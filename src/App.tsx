@@ -3,22 +3,50 @@ import "./App.css";
 import { useState } from "react";
 // import { invoke } from "@tauri-apps/api/core";
 
-function App() {
-  const [consentedtoblowuptheirpc, consentplshahathx] = useState(false);
-
+function StinkyVM() {
   return (
     <div className="content">
-      <h1 className="center">hi welcome to pipebomb!!</h1>
-      <p className="center">ok so what this is about is to pretty much nuke your whole main directory of your computer, yes you heard me right.</p>
-
-      <label className="center">
-        <input type="checkbox" checked={consentedtoblowuptheirpc} onChange={(val) => consentplshahathx(val.target.checked)}></input>
-        i absolutely consent to this and i know that im gonna kill my computer including my files at any point
-      </label>
-
-      <button disabled={!consentedtoblowuptheirpc}>pls blow up my pc already :(</button>
+      <h1>ur no fun</h1>
     </div>
-  );
+  )
+}
+
+function ExplosionSounds() {
+  return (
+    <div className="content">
+      <h1>congrants!</h1>
+      <a>your pipe bomb installation has successfully went through</a>
+      <p>now do your daily stuff now! do <a href="https://monkeytype.com/" target="_blank">monkeytype</a> or something, we'll let you know when your PC gets nuked after pressing a key</p>
+      <a>oh and if you chicken out, uh, you can close the window and make sure the process is killed for stopping this - yeah.</a>
+    </div>
+  )
+}
+
+function PlsDoNotBlowUpYourPCYetHaha({ onState }: { onState: () => void }) {
+    const [consentedtoblowuptheirpc, consentplshahathx] = useState(false);
+
+    return (
+      <div className="content">
+        <h1 className="center">hi welcome to pipebomb!!</h1>
+        <p className="center">ok so what this is about is to pretty much nuke your whole main directory of your computer, yes you heard me right.</p>
+        <p className="center">ok but like it doesnt nuke it instantly, however, every time you press a key there's a veryyyyy small chance that your whole root directory is deleted</p>
+
+        <label className="center">
+          <input type="checkbox" checked={consentedtoblowuptheirpc} onChange={(val) => consentplshahathx(val.target.checked)}></input>
+          anyways, check this to absolutely consent to this and that you know your OS installation is gonna get screwed and so does your files too and you wont be able to recover them
+        </label>
+
+        <button className="center" disabled={!consentedtoblowuptheirpc} onClick={() => { onState(); }}>pls blow up my pc already :(</button>
+      </div>
+    )
+}
+
+function App() {
+  const [entered, yesentered] = useState(false);
+
+  return entered
+    ? <ExplosionSounds />
+    : <PlsDoNotBlowUpYourPCYetHaha onState={() => yesentered(true)} />
 }
 
 export default App;

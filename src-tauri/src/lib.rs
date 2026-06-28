@@ -1,7 +1,29 @@
-// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+fn is_ts_a_vm() -> bool {
+    #[cfg(target_os = "macos")]
+    {
+        use std::process::Command;
+
+        if let Ok(out) = Command::new("ioreg").args(["-l"]).output() {
+            let res = String::from_utf8_lossy(&out.stdout)
+            const turipipip: [&str; 5] = ["vmware", "virtualbox", "parallels", "qemu", "innotek", "utm"] // hope they are correct </3
+
+            if turipipip.iter().any(|furry| res.contains(furry)) {
+                return true;
+            }
+        }
+
+        false
+    }
+
+    #[cfg(not(any(
+        target_os = "macos",
+        target_os = "linux",
+        target_os = "windows"
+    )))]
+    {
+        false // WHO IS HE??
+    }
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]

@@ -14,11 +14,20 @@ body {
   flex-direction: column;
 }
 
+.pleasecenterpleasepleaseplase {
+  text-align: center;
+}
+
 .content {
   flex: 1 0 auto;
   padding: 2rem;
   width: 50%;
   margin: 0 auto;
+}
+
+.content button {
+  margin: 1.5rem auto 0;
+  display: block;
 }
 
 footer {
