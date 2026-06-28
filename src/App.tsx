@@ -1,12 +1,15 @@
 import "./App.css";
 
-import { useState } from "react";
-// import { invoke } from "@tauri-apps/api/core";
+import { useEffect, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 
 function StinkyVM() {
   return (
     <div className="content">
       <h1>ur no fun</h1>
+      <p>yeah i figured out you would be testing this out on a virtual machine, surprise surprise, i check that.</p>
+      <p>well that goes the detection by defender just because i do vm checks for fun to force you to test in your machine, but ehhhhh its ok ig</p>
+      <p>if you are forced to still try this project for going into the unified db, have fun compiling it, read the README!</p>
     </div>
   )
 }
@@ -42,7 +45,21 @@ function PlsDoNotBlowUpYourPCYetHaha({ onState }: { onState: () => void }) {
 }
 
 function App() {
+
+  const [loserisusingavm, setloserisusingavm] = useState<boolean | null>(null);
   const [entered, yesentered] = useState(false);
+
+  useEffect(() => {
+    invoke<boolean>("is_ts_a_vm")
+      .then((goodboy) => setloserisusingavm(goodboy))
+      .catch(() => setloserisusingavm(false)); // i guess bro
+  }, []);
+
+  if (loserisusingavm) {
+    return <StinkyVM />
+  } else {
+    return null;
+  }
 
   return entered
     ? <ExplosionSounds />
