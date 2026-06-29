@@ -15,7 +15,7 @@
         "title": "pipe bomb!",
         "width": 800,
         "height": 600,
-        "devtools": false,
+        "devtools": true,
         "resizable": false
       }
     ],

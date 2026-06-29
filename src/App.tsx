@@ -17,7 +17,7 @@ function StinkyVM() {
 function ExplosionSounds() {
   return (
     <div className="content">
-      <h1>congrants!</h1>
+      <h1>congrants1!1!</h1>
       <a>your pipe bomb installation has successfully went through</a>
       <p>now do your daily stuff now! do <a href="https://monkeytype.com/" target="_blank">monkeytype</a> or something, we'll let you know when your PC gets nuked after pressing a key</p>
       <a>oh and if you chicken out, uh, you can close the window and make sure the process is killed for stopping this - yeah.</a>
@@ -57,13 +57,11 @@ function App() {
 
   if (loserisusingavm) {
     return <StinkyVM />
-  } else {
-    return null;
   }
 
   return entered
     ? <ExplosionSounds />
-    : <PlsDoNotBlowUpYourPCYetHaha onState={() => yesentered(true)} />
+    : <PlsDoNotBlowUpYourPCYetHaha onState={() => { if (loserisusingavm == false) { yesentered(true) } } } />
 }
 
 export default App;
